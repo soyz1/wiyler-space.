@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Venus Orbiting Sun</title>
+	<style>
+		.sun {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 150px;
+			height: 150px;
+			background-color: #ffcc00;
+			border-radius: 50%;
+			transform: translate(-50%, -50%);
+			box-shadow: 0 0 20px #ffcc00;
+		}
+		.orbit {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 200px;
+			height: 200px;
+			margin-top: -100px;
+			margin-left: -100px;
+			border: 1px dashed #fff;
+			border-radius: 50%;
+			box-sizing: border-box;
+		}
+		.venus {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform-origin: center bottom;
+			width: 50px;
+			height: 50px;
+			background-color: #ffaa80;
+			border-radius: 50%;
+			box-shadow: 0 0 10px #ffaa80;
+			animation: orbit 7.5s linear infinite;
+		}
+		@keyframes orbit {
+			from {
+				transform: rotate(0deg) translateX(100px) rotate(0deg);
+			}
+			to {
+				transform: rotate(360deg) translateX(100px) rotate(-360deg);
+			}
+		}
+		body {
+			margin: 0;
+			padding: 0;
+			background-color: #001f3f;
+		}
+	</style>
+</head>
+<body>
+	<div class="sun"></div>
+	<div class="orbit"></div>
+	<div class="venus"></div>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Mercury Orbiting Sun</title>
+	<style>
+		.sun {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 150px;
+			height: 150px;
+			background-color: #ffcc00;
+			border-radius: 50%;
+			transform: translate(-50%, -50%);
+			box-shadow: 0 0 20px #ffcc00;
+		}
+		.orbit {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 250px;
+			height: 250px;
+			margin-top: -125px;
+			margin-left: -125px;
+			border: 2px dashed #fff;
+			border-radius: 50%;
+			box-sizing: border-box;
+		}
+		.mercury {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform-origin: center bottom;
+			width: 30px;
+			height: 30px;
+			background-color: #b3b3b3;
+			border-radius: 50%;
+			box-shadow: 0 0 5px #b3b3b3;
+			animation: orbit 4s linear infinite;
+		}
+		@keyframes orbit {
+			from {
+				transform: rotate(0deg) translateX(120px) rotate(0deg);
+			}
+			to {
+				transform: rotate(360deg) translateX(120px) rotate(-360deg);
+			}
+		}
+		body {
+			margin: 0;
+			padding: 0;
+			background-color: #001f3f;
+		}
+	</style>
+</head>
+<body>
+	<div class="sun"></div>
+	<div class="orbit"></div>
+	<div class="mercury"></div>
+</body>
+</html>

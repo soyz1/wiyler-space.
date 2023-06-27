@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Jupiter Orbiting Sun</title>
+    <style>
+      /* Create a div to represent the Sun */
+      .sun {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background-color: yellow;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -100px;
+        margin-left: -100px;
+      }
+      
+      /* Create a div to represent Jupiter */
+      .jupiter {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: orange;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -20px;
+        margin-left: 100px;
+        animation: orbit 22.5s linear infinite;
+      }
+      
+      /* Define the animation for Jupiter's orbit */
+      @keyframes orbit {
+        from {
+          transform: rotate(0deg) translateX(300px) rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg) translateX(300px) rotate(-360deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="sun"></div>
+    <div class="jupiter"></div>
+  </body>
+</html>

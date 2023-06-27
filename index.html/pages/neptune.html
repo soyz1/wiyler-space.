@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Neptune Orbiting the Sun</title>
+</head>
+<body>
+	<canvas id="canvas" width="800" height="800"></canvas>
+	<script>
+		// Define the canvas and context
+		var canvas = document.getElementById("canvas");
+		var ctx = canvas.getContext("2d");
+		
+		// Define the sun
+		var sun = {
+			x: canvas.width / 2,
+			y: canvas.height / 2,
+			radius: 30,
+			color: "yellow",
+			mass: 1000000,
+			vx: 0,
+			vy: 0
+		};
+		
+		// Define Neptune
+		var neptune = {
+			x: canvas.width / 2,
+			y: canvas.height / 2 - 300,
+			radius: 10,
+			color: "blue",
+			mass: 1000,
+			vx: 5,
+			vy: 0
+		};
+		
+		// Define the gravitational constant
+		var G = 6.67408e-11;
+		
+		// Define the time step and simulation duration
+		var dt = 1000 / 60;
+		var simulationDuration = 1000 * 60 * 60 * 24 * 165; // 165 Earth years in milliseconds
+		
+		// Define the function to calculate the gravitational force between two objects
+		function calculateForce(m1, m2, r) {
+			return (G * m1 * m2) / (r * r);
+		}
+		
+		// Define the function to calculate the distance between two objects
+		function calculateDistance(obj1, obj2) {
+			var dx = obj1.x - obj2.x;
+			var dy = obj1.y - obj2.y;
+			return Math.sqrt(dx * dx + dy * dy);
+		}
+		
+		// Define the function to update the position of an object based on its velocity
+		function updatePosition(obj) {
+			obj.x += obj.vx;
+			obj.y += obj.vy;
+		}
+		
+		// Define the function to update the velocity of an object based on the gravitational force acting on it
+		function updateVelocity(obj1, obj2) {
+			var r = calculateDistance(obj1, obj2);
+			var force = calculateForce(obj1.mass, obj2.mass, r);
+			var angle = Math.atan2(obj2.y - obj1.y, obj2.x - obj1.x);
+			var fx = force * Math.cos(angle);
+			var fy = force * Math.sin(angle);
+			obj1.vx += fx / obj1.mass;
+			obj1.vy += fy / obj1.mass;
+		}
+		
+		// Define the function to draw an object on the canvas
+		function drawObject(obj) {
+			ctx.beginPath();
+			ctx.arc(obj.x, obj.y, obj.radius, 0, 2 * Math.PI);
+			ctx.fillStyle = obj.color;
+			ctx.fill();
+			ctx.closePath();
+		}
+		
+		// Define the function to clear the canvas
+		function clearCanvas() {
+			ctx.clearRect(0, 0, canvas.width, canvas.height);
+		}
+		
+		// Define the function to update the simulation
+		function updateSimulation() {
+			// Update the position and velocity of Neptune
+			updateVelocity(neptune, sun);
+			updatePosition(neptune);
+			
+			// Clear the canvas
+			clearCanvas();
+			
+			// Draw the sun and Neptune
+			drawObject(sun);
+			drawObject(neptune);
+			
+			// Repeat the simulation until the simulation duration is reached
+			if (Date.now() < simulationDuration) {
+				window.requestAnimationFrame(updateSimulation);
+			}
+		}
+		
+		// Start the simulation
+		updateSimulation();
+	</script>
+</body>
+</html>

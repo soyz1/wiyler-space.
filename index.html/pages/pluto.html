@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Pluto Orbiting the Sun</title>
+	<style>
+		canvas {
+			border: 1px solid black;
+		}
+	</style>
+</head>
+<body>
+	<h1>Pluto Orbiting the Sun</h1>
+	<canvas id="canvas" width="600" height="600"></canvas>
+
+	<script>
+		var canvas = document.getElementById("canvas");
+		var ctx = canvas.getContext("2d");
+
+		// Define the radius and position of the Sun and Pluto
+		var sunRadius = 50;
+		var sunX = canvas.width/2;
+		var sunY = canvas.height/2;
+		var plutoRadius = 10;
+		var plutoDistance = 200;
+		var plutoAngle = 0;
+
+		function draw() {
+			// Clear the canvas
+			ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+			// Draw the Sun
+			ctx.beginPath();
+			ctx.arc(sunX, sunY, sunRadius, 0, Math.PI * 2);
+			ctx.fillStyle = "yellow";
+			ctx.fill();
+			ctx.closePath();
+
+			// Calculate the position of Pluto
+			var plutoX = sunX + plutoDistance * Math.cos(plutoAngle);
+			var plutoY = sunY + plutoDistance * Math.sin(plutoAngle);
+
+			// Draw Pluto
+			ctx.beginPath();
+			ctx.arc(plutoX, plutoY, plutoRadius, 0, Math.PI * 2);
+			ctx.fillStyle = "gray";
+			ctx.fill();
+			ctx.closePath();
+
+			// Update the angle for the next frame
+			plutoAngle += 0.01;
+		}
+
+		setInterval(draw, 10);  // Call the draw function every 10 milliseconds
+	</script>
+</body>
+</html>

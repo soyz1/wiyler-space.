@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Saturn Orbiting Sun</title>
+    <style>
+      /* Create a div to represent the Sun */
+      .sun {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background-color: yellow;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -100px;
+        margin-left: -100px;
+      }
+      
+      /* Create a div to represent Saturn */
+      .saturn {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background-color: rgb(218, 165, 32);
+        position: absolute;
+        top: 50%;
+        left: 25%;
+        margin-top: -15px;
+        margin-left: 400px;
+        animation: orbit 25s linear infinite;
+      }
+
+      /* Define the animation for Saturn's orbit */
+      @keyframes orbit {
+        from {
+          transform: rotate(0deg) translateX(400px) rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg) translateX(400px) rotate(-360deg);
+        }
+      }
+      
+      /* Define the animation for Saturn's rings */
+      @keyframes rotate-rings {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="sun"></div>
+    <div class="saturn"></div>
+    <div class="rings"></div>
+  </body>
+</html>

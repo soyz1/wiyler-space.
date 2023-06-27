@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Uranus Orbiting the Sun</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+		}
+		canvas {
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="canvas"></canvas>
+	<script>
+		// Set up the canvas
+		var canvas = document.getElementById("canvas");
+		var ctx = canvas.getContext("2d");
+		canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;
+
+		// Define the sun and Uranus
+		var sun = {
+			x: canvas.width / 2,
+			y: canvas.height / 2,
+			radius: 50,
+			color: "yellow"
+		};
+		var uranus = {
+			x: canvas.width / 2 - 300,
+			y: canvas.height / 2,
+			radius: 10,
+			angle: 0,
+			speed: 0.005,
+			distance: 300,
+			color: "cyan"
+		};
+
+		// Define the animation function
+		function animate() {
+			// Clear the canvas
+			ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+			// Draw the sun
+			ctx.beginPath();
+			ctx.arc(sun.x, sun.y, sun.radius, 0, 2 * Math.PI);
+			ctx.fillStyle = sun.color;
+			ctx.fill();
+
+			// Draw Uranus
+			ctx.beginPath();
+			ctx.arc(sun.x + uranus.distance * Math.cos(uranus.angle), sun.y + uranus.distance * Math.sin(uranus.angle), uranus.radius, 0, 2 * Math.PI);
+			ctx.fillStyle = uranus.color;
+			ctx.fill();
+
+			// Update Uranus' position
+			uranus.angle += uranus.speed;
+
+			// Request the next frame
+			requestAnimationFrame(animate);
+		}
+
+		// Start the animation
+		animate();
+	</script>
+</body>
+</html>

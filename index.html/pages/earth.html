@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+        body {
+            background-color: #001f3f;
+        }
+    </style>
+    <title>Earth Orbiting the Sun</title>
+    <style>
+      #sun {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background-color: yellow;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .orbit {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 200px;
+			height: 200px;
+			margin-top: -100px;
+			margin-left: -100px;
+			border: 1px dashed #fff;
+			border-radius: 50%;
+			box-sizing: border-box;
+		}
+      
+      #earth {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: blue;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -150px);
+        animation: orbit 10s linear infinite;
+      }
+      
+      @keyframes orbit {
+        from {
+          transform: rotate(0deg) translate(-50%, -150px) rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg) translate(-50%, -150px) rotate(-360deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="sun"></div>
+    <div id="earth"></div>
+  </body>
+</html>

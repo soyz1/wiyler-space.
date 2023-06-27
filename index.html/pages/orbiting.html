@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mercury Orbiting the Sun</title>
+    <style>
+        .mercury-orbit {
+            animation: orbit 88s linear infinite;
+            transform-origin: 250px 250px;
+        }
+
+        @keyframes orbit {
+            0% {
+                transform: rotate(0);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <svg width="500" height="500">
+        <circle cx="250" cy="250" r="10" fill="yellow" />
+        <g class="mercury-orbit">
+            <circle cx="250" cy="100" r="5" fill="gray" />
+        </g>
+    </svg>
+</body>
+</html>
